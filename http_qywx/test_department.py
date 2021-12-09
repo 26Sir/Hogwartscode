@@ -20,6 +20,7 @@ def test_adddepart():
             "order": 1,
             "id": 2
     }
+    head = {"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8", 'Connection': 'close'}
     res = requests.post(
         f"https://qyapi.weixin.qq.com/cgi-bin/department/create?access_token={test_token()}",
         json=data
