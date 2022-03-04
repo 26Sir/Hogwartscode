@@ -11,7 +11,7 @@ def readtxt():
         a = line.split()
         b = a[2:3]  # 这是选取需要读取的位数
         # list1.append(b)  # 将其添加在列表之中
-        list1.extend(b)
+        list1.extend(b) # 将列表相加得到最后完整的一列数据
         line = f.readline()
     f.close()
     
