@@ -15,11 +15,12 @@ def matp(x,y):
     
     plt.yscale('linear') #设置线性轴，包括: linear、log、symlog、logit
     
-    plt.plot(y,color="blue",linewidth=2,marker="o",markersize=5,markerfacecolor="yellow",markeredgewidth=1,markeredgecolor="red")
+    # plt.plot(y,color="blue",linewidth=2,marker="o",markersize=5,markerfacecolor="yellow",markeredgewidth=1,markeredgecolor="red")
+    plt.plot(y,color="blue",linewidth=2,markersize=5)
     plt.savefig('../data/sn.png')
     plt.show() #图片展示
 
 if __name__ == '__main__':
-    y = [0.21, 0.01, 0.0, 0.9]
-    x = [1, 2, 3, 4]
+    y = [0.21, 0.01, 0.0, 0.9,0.3,0.55,0.23,0.46,0.67]
+    x = [1, 2, 3, 4,5,6,7,8,9]
     matp(x,y)
