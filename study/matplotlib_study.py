@@ -10,6 +10,8 @@ def matp(x,y):
     plt.title("cpu Test")#图片标题
     
     plt.xlabel("time(s)") #横轴文字
+    x1 = list(range(len(x)))
+    plt.xticks(x1,rotation=45, fontsize=5)
     
     plt.ylabel("cpu(%)")#纵轴文字
     
@@ -22,5 +24,5 @@ def matp(x,y):
 
 if __name__ == '__main__':
     y = [0.21, 0.01, 0.0, 0.9,0.3,0.55,0.23,0.46,0.67]
-    x = [1, 2, 3, 4,5,6,7,8,9]
+    x = [1.9, 2, 3, 4,5,6,7,8,9]
     matp(x,y)
