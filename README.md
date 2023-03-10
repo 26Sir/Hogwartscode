@@ -1,4 +1,4 @@
-ssss
+#国内常用的镜像源
 https://pypi.tuna.tsinghua.edu.cn/simple/ 清华
 http://pypi.doubanio.com/simple/ 豆瓣
 http://mirrors.aliyun.com/pypi/simple/ 阿里
