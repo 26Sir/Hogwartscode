@@ -12,3 +12,7 @@ desired_caps['appActivity']='com.android.settings.Settings'
 driver=webdriver.Remote('http://localhost:4723/wd/hub',desired_caps)
 print("启动【设置】应用")
 driver.quit()
+
+
+
+
