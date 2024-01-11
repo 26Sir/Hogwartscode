@@ -42,6 +42,7 @@ def demo_test():
     #         print(k,v)
     #     print(i)
     ds = sorted(t_list,key=lambda s:s['score'],reverse=True)
+    ds = sorted(t_list.items(),key=lambda s:s[1],reverse=True)
     print(ds)
 
 # def bubble_sort(arr):
