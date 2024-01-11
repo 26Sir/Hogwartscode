@@ -38,5 +38,63 @@ def demo_test():
     print(sort_score_list)
 
 
+def demo_3():
+    str_1 = 'bdackmkdbb'
+    set_1 = set()
+    for i in str_1:
+        if i not in set_1:
+            set_1.add(i)
+        else:
+            print(i)
+            return i
+
+
+def find_second_unique(s):
+    count = {}  # 创建一个空字典用于记录每个字符及其出现次数
+
+    for char in s:
+        if char not in count:
+            count[char] = 1  # 初始化计数为1
+        else:
+            count[char] += 1  # 将该字符的计数加1
+    # second_unique = None  # 定义变量存放第二个唯一字符
+    #
+    # for key, value in count.items():
+    #     if value == 1 and second_unique is None:
+    #         second_unique = key  # 当遇到第二个唯一字符时赋值给变量
+    
+    list_s = list(s)
+    one_list = []
+    for listi in list(s):
+        i_index = list_s.index(listi)
+        if listi not in list_s[i_index+1:]:
+            one_list.append(listi)
+    print(f"第二次出现的唯一字符{one_list[1]}")
+
+    first_unique = None  # 第一个只出现一次的字符
+    second_unique = None  # 第二个只出现一次的字符
+    for char in s:
+        if count[char] == 1:
+            if first_unique is None:
+                first_unique = char  # 记录第一个只出现一次的字符
+            else:
+                second_unique = char  # 记录第二个只出现一次的字符，并退出循环
+                break
+            
+    return second_unique
+    
+    
+
+
+
+
+
+
 if __name__ == '__main__':
-    demo_test()
+    # demo_test()
+    # 测试示例
+    string = "bdackmkdbb"
+    result = find_second_unique(string)
+    # print(set(string))
+    print("第二个唯一字符是:", result)
+    # demo_3()
