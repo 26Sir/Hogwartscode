@@ -22,21 +22,41 @@
 按照得分来，进行排序 按照原有格式输出
 """
 
-
+import json
 def demo_test():
-    input_list = ["{'name':'张三','score':80}", "{'name':'李四','score':100}", "{'name':'王五','score':10}",
-                  "{'name':'赵六','score':99}", "{'name':'何齐','score':60}"]
-    name_list = []
+    t_list = [{'name':'张三','score':80}, {'name':'李四','score':100}, {'name':'王五','score':10},{'name':'赵六','score':99}, {'name':'何齐','score':60}]
+    # t_list = ['{"name":"张三","score":80}','{"name":"李四","score":100}','{"name":"王五","score":10}','{"name":"赵六","score":99}','{"name":"何齐","score":60}']
+    n = len(t_list)
     score_list = []
-    for i in input_list:
-        print(i)
-        # print(i["name"])
-        # print(i['score'])
-        # name_list.append(i["name"])
-        score_list.append(i["score"])
-    sort_score_list = sorted(score_list)
-    print(sort_score_list)
+    # print(json.loads(tets))
+    # for i in range(n-1):
+    #     # print(t_list[i])
+    #     for j in range(0, n - i - 1):  # 内层循环控制每次比较的长度
+    #         if t_list[j]['score'] > t_list[j + 1]['score']:
+    #             t_list[j], t_list[j + 1] = t_list[j + 1], t_list[j]
+    #             print(t_list[j])
+        # if arr[j] > arr[j + 1]:  # 如果前面的数字大于后面的数字，则交换两个数字的位置
+        #                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    # for i in t_list:
+    #     for k,v in i.items():
+    #         print(k,v)
+    #     print(i)
+    ds = sorted(t_list,key=lambda s:s['score'],reverse=True)
+    print(ds)
 
+# def bubble_sort(arr):
+#     n = len(arr)
+#
+#     for i in range(n - 1):  # 外层循环控制需要经过多少次比较
+#         for j in range(0, n - i - 1):  # 内层循环控制每次比较的长度
+#             if arr[j] > arr[j + 1]:  # 如果前面的数字大于后面的数字，则交换两个数字的位置
+#                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
+#     return arr
+#
+# # 测试样例
+# array = [64, 34, 25, 12, 22, 11, 90]
+# bubble_sort(array)
+# print("排序结果为：", array)
 
 def demo_3():
     str_1 = 'bdackmkdbb'
@@ -57,12 +77,8 @@ def find_second_unique(s):
             count[char] = 1  # 初始化计数为1
         else:
             count[char] += 1  # 将该字符的计数加1
-    # second_unique = None  # 定义变量存放第二个唯一字符
-    #
-    # for key, value in count.items():
-    #     if value == 1 and second_unique is None:
-    #         second_unique = key  # 当遇到第二个唯一字符时赋值给变量
-    
+
+
     list_s = list(s)
     one_list = []
     for listi in list(s):
@@ -80,10 +96,10 @@ def find_second_unique(s):
             else:
                 second_unique = char  # 记录第二个只出现一次的字符，并退出循环
                 break
-            
+
     return second_unique
-    
-    
+
+
 
 
 
@@ -91,10 +107,4 @@ def find_second_unique(s):
 
 
 if __name__ == '__main__':
-    # demo_test()
-    # 测试示例
-    string = "bdackmkdbb"
-    result = find_second_unique(string)
-    # print(set(string))
-    print("第二个唯一字符是:", result)
-    # demo_3()
+    demo_test()
