@@ -18,4 +18,17 @@ max_sum = df['总分'].max()
 
 stu_name = df['总分'].idxmax()
 print('{stu}总分最高, {score}'.format(stu=stu_name, score=max_sum))
-pd.read_sql()
+# pd.read_sql()
+
+
+df.index.name = '姓名'
+df.columns.name = '科目'
+
+print(type(df.values))
+print(df.values)
+print(df.values[0][0])
+
+for col in df:
+    print(col, df[col])
+for k,v in df.iteritems():
+    print(k,v)

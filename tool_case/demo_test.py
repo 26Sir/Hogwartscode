@@ -100,7 +100,26 @@ def find_second_unique(s):
 
     return second_unique
 
-
+# 打印数组中出现次数过半的数
+def find_mid_num(in_list):
+    n = len(in_list)
+    for i in in_list:
+        if in_list.count(i) > n / 2:
+            print(i)
+    
+    conut = {}
+    for j in in_list:
+        if j not in conut:
+            conut[j] = 1
+        else:
+            conut[j] += 1
+    
+    m = [(k, v) for k, v in conut.items() if v > n / 2]
+    print(m)
+    for k, v in conut.items():
+        if v > n / 2:
+            print("++++++")
+            print(k)
 
 
 
