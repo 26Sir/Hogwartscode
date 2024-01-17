@@ -42,7 +42,7 @@ def demo_test():
     #         print(k,v)
     #     print(i)
     ds = sorted(t_list,key=lambda s:s['score'],reverse=True)
-    ds = sorted(t_list.items(),key=lambda s:s[1],reverse=True)
+    # ds = sorted(t_list.items(),key=lambda s:s[1],reverse=True)
     print(ds)
 
 # def bubble_sort(arr):
@@ -53,11 +53,6 @@ def demo_test():
 #             if arr[j] > arr[j + 1]:  # 如果前面的数字大于后面的数字，则交换两个数字的位置
 #                 arr[j], arr[j + 1] = arr[j + 1], arr[j]
 #     return arr
-#
-# # 测试样例
-# array = [64, 34, 25, 12, 22, 11, 90]
-# bubble_sort(array)
-# print("排序结果为：", array)
 
 def demo_3():
     str_1 = 'bdackmkdbb'
@@ -69,6 +64,24 @@ def demo_3():
             print(i)
             return i
 
+#输入一个字符串，求出字符串里字符出现最多的数量
+def find_str(s):
+    if len(s)==0 :
+        return 0
+    count = {}
+    for char in s:
+        if char not in count:
+            count[char] = 1
+        else:
+            count[char] +=1
+    arr = []
+    for k,v in count.items():
+        arr.append((k,v))
+    for i in range(len(arr) - 1):  # 外层循环控制需要经过多少次比较
+        for j in range(0, len(arr) - i - 1):  # 内层循环控制每次比较的长度
+            if arr[j][1] > arr[j + 1][1]:  # 如果前面的数字大于后面的数字，则交换两个数字的位置
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    return arr[-1][0]
 
 def find_second_unique(s):
     count = {}  # 创建一个空字典用于记录每个字符及其出现次数
@@ -78,8 +91,6 @@ def find_second_unique(s):
             count[char] = 1  # 初始化计数为1
         else:
             count[char] += 1  # 将该字符的计数加1
-
-
     list_s = list(s)
     one_list = []
     for listi in list(s):
@@ -103,28 +114,48 @@ def find_second_unique(s):
 # 打印数组中出现次数过半的数
 def find_mid_num(in_list):
     n = len(in_list)
-    for i in in_list:
-        if in_list.count(i) > n / 2:
-            print(i)
-    
+    if n == 0:
+        return 0
     conut = {}
     for j in in_list:
         if j not in conut:
             conut[j] = 1
         else:
             conut[j] += 1
-    
-    m = [(k, v) for k, v in conut.items() if v > n / 2]
-    print(m)
+    m = [(k, v) for k, v in conut.items() if v >= n / 2]
     for k, v in conut.items():
-        if v > n / 2:
-            print("++++++")
-            print(k)
+        if v >= n / 2:
+            mid_num.append((k,v))
+    return mid_num
 
+def merge(nums1, m, nums2, n):
+        """
+        Do not return anything, modify nums1 in-place instead.
+        """
+        sorted = []
+        p1, p2 = 0, 0
+        while p1 < m or p2 < n:
+            if p1 == m:
+                sorted.append(nums2[p2])
+                p2 += 1
+            elif p2 == n:
+                sorted.append(nums1[p1])
+                p1 += 1
+            elif nums1[p1] < nums2[p2]:
+                sorted.append(nums1[p1])
+                p1 += 1
+            else:
+                sorted.append(nums2[p2])
+                p2 += 1
+        return sorted
 
 
 
 
 
 if __name__ == '__main__':
-    demo_test()
+    # demo_test()
+    # ss = find_mid_num(in_list="ac")
+    # print(ss)
+    sort_list = merge(nums1=[1,2,3,4],m=4,nums2=[2,4,6,8],n=4)
+    print(sort_list)
