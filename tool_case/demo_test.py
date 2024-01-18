@@ -123,6 +123,7 @@ def find_mid_num(in_list):
         else:
             conut[j] += 1
     m = [(k, v) for k, v in conut.items() if v >= n / 2]
+    mid_num =[]
     for k, v in conut.items():
         if v >= n / 2:
             mid_num.append((k,v))
@@ -149,8 +150,31 @@ def merge(nums1, m, nums2, n):
                 p2 += 1
         return sorted
 
+"""
+给定一个未排序的整数数组 nums ，找出数字连续的最长序列（不要求序列元素在原数组中连续）的长度。
 
-
+输入：nums = [100,4,200,1,3,2]
+输出：4
+解释：最长数字连续序列是 [1, 2, 3, 4]。它的长度为 4。
+"""
+def find_len(nums):
+    list_len = len(nums)
+    if list_len == 0:
+        return 0
+    for i in range(0, list_len):
+        for j in range(0, list_len - i - 1):
+            if nums[j] > nums[j + 1]:
+                nums[j], nums[j + 1] = nums[j + 1], nums[j]
+    res = m = 1
+    for n in range(list_len - 1):
+        if nums[n] == nums[n - 1]:
+            continue
+        if nums[n + 1] - nums[n] == 1:
+            m += 1
+            res = max(res, m)
+        else:
+            m = 1
+    return res
 
 
 if __name__ == '__main__':
