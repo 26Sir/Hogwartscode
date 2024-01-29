@@ -176,10 +176,38 @@ def find_len(nums):
             m = 1
     return res
 
+def longestConsecutive(nums):
+        res = 0
+        hash_dict = dict()
+        for num in nums:
+            # 新进来哈希表一个数
+            if num not in hash_dict:
+                # 获取当前数的最左边连续长度,没有的话就更新为0
+                left = hash_dict.get(num-1,0)
+                # 同理获取右边的数
+                right = hash_dict.get(num+1,0)
+                """不用担心左边和右边没有的情况
+                因为没有的话就是left或者right0
+                并不改变什么
+                """
+                # 把当前数加入哈希表，代表当前数字出现过
+                hash_dict[num] = 1
+                # 更新长度
+                length = left+1+right
+                res = max(res,length)
+                # 更新最左端点的值，如果left=n存在，那么证明当前数的前n个都存在哈希表中
+                hash_dict[num-left] = length
+                # 更新最右端点的值，如果right=n存在，那么证明当前数的后n个都存在哈希表中
+                hash_dict[num+right] = length
+                # 此时 【num-left，num-right】范围的值都连续存在哈希表中了
+                # 即使left或者right=0都不影响结果
+        return res
 
 if __name__ == '__main__':
     # demo_test()
     # ss = find_mid_num(in_list="ac")
     # print(ss)
     sort_list = merge(nums1=[1,2,3,4],m=4,nums2=[2,4,6,8],n=4)
+    ss = longestConsecutive(nums = [1,2,3,4,7,8,9,10,11,12,100])
+    print(ss)
     print(sort_list)
