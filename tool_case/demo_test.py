@@ -167,10 +167,13 @@ def find_len(nums):
                 nums[j], nums[j + 1] = nums[j + 1], nums[j]
     res = m = 1
     for n in range(list_len - 1):
+        #如果当前数跟左边的一致，那么继续
         if nums[n] == nums[n - 1]:
             continue
+        #如果右边的减现在的=1，m+1，res存放最大的
         if nums[n + 1] - nums[n] == 1:
             m += 1
+            # print(n,res)
             res = max(res, m)
         else:
             m = 1
@@ -201,13 +204,14 @@ def longestConsecutive(nums):
             hash_dict[num+right] = length
             # 此时 【num-left，num-right】范围的值都连续存在哈希表中了
             # 即使left或者right=0都不影响结果
-        return res
+    print(hash_dict)
+    return res
 
 if __name__ == '__main__':
     # demo_test()
     # ss = find_mid_num(in_list="ac")
     # print(ss)
-    sort_list = merge(nums1=[1,2,3,4],m=4,nums2=[2,4,6,8],n=4)
-    ss = longestConsecutive(nums = [1,2,3,4,7,8,9,10,11,12,100])
+    # sort_list = merge(nums1=[1,2,3,4],m=4,nums2=[2,4,6,8],n=4)
+    ss = find_len(nums = [1,2,2,3,4,7,8,9,10,11,12,100])
     print(ss)
-    print(sort_list)
+    # print(sort_list)
